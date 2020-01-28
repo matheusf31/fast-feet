@@ -26,6 +26,7 @@ class SessionController {
         name,
         email,
       },
+      // ADICIONAR CAMPO ADMIN NO PAYLOAD DO TOKEN
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
