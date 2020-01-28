@@ -8,6 +8,19 @@ Desafio para certificação do curso bootcamp gostack 10 da RocketSeat.
 
 ### Backend
 
+- Sucrase
+- Nodemon
+
+---
+
+- Eslint
+- Prettier
+- Editorconfig
+
+---
+
+- Sequelize
+
 ### Frontend
 
 ### Mobile
