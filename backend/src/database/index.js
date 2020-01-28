@@ -5,11 +5,11 @@
 import Sequelize from 'sequelize';
 
 import User from '../app/models/User';
+import Recipient from '../app/models/Recipient';
 
 import databaseConfig from '../config/database';
 
-// eslint-disable-next-line no-unused-vars
-const models = [User];
+const models = [User, Recipient];
 
 class Database {
   constructor() {
