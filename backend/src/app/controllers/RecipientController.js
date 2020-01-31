@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 
 import Recipient from '../models/Recipient';
+import File from '../models/File';
 
 class RecipientController {
   async store(req, res) {
@@ -33,6 +34,7 @@ class RecipientController {
       state: Yup.string(),
       city: Yup.string(),
       cep_number: Yup.string().min(8),
+      signature: Yup.number(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -41,9 +43,13 @@ class RecipientController {
 
     const user = await Recipient.findByPk(req.body.id);
 
-    /**
-     * Verificar se o usuário logado é admin
-     */
+    const checkSignature = await File.findOne({
+      where: { id: req.body.signature },
+    });
+
+    if (!(await checkSignature)) {
+      return res.status(400).json({ error: 'Signature not found' });
+    }
 
     const recipient = await user.update(req.body);
 

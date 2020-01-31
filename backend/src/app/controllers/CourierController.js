@@ -28,9 +28,9 @@ class CourierController {
       return res.status(400).json({ error: 'User already exists.' });
     }
 
-    const recipients = await Courier.create(req.body);
+    const { name, email } = await Courier.create(req.body);
 
-    return res.json(recipients);
+    return res.json({ name, email });
   }
 
   async update(req, res) {
